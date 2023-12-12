@@ -1,0 +1,24 @@
+/* MessageItem.css */
+.message-item {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .message-content {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .message-icons {
+    display: flex;
+    flex-direction: row-reverse; /* Invierte la dirección de los íconos */
+    align-items: center; /* Alinea verticalmente los íconos */
+  }
+  
+  .message-icons i {
+    font-size: 1.5em;
+    margin-left: 0.5em; /* Agrega margen entre los íconos */
+  }
+  
+  
+  
