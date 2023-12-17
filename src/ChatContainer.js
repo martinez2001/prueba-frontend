@@ -5,18 +5,21 @@ import MessageInput from './MessageInput';
 import './ChatContainer.css';  // Importa los estilos CSS
 
 
-function ChatContainer({ chat }) {
+function ChatContainer({ chat, messages,onSendMessage}) {
+  
+  
   return (
     <div className="chat-container">
       <div className="chat-content">
         <h2>{chat.name}</h2>
-        <MessageList messages={chat.messages} />
+        <MessageList messages={messages} chat={chat}/>
       </div>
       <div className="message-input-container">
-        <MessageInput />
+        <MessageInput messages={messages} chat={chat} onSendMessage={onSendMessage}/>
       </div>
     </div>
   );
 }
+
 
 export default ChatContainer;

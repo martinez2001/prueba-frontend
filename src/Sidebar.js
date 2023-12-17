@@ -13,7 +13,7 @@ function Sidebar({ chats, onChatSelect }) {
     return (
         <div className="sidebar">
         <h2>Chats</h2>
-        <i class="bi bi-plus-circle"></i>
+        <i className="bi bi-plus-circle"></i>
         {chats.map((chat) => (
             <ChatItem key={chat.name} chat={chat} onClick={() => onChatSelect(chat)}/>
         ))}

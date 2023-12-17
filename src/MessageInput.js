@@ -1,13 +1,31 @@
 // MessageInput.js
-import React from 'react';
 import './MessageInput.css';  // Importa los estilos CSS
 
-function MessageInput() {
+import React, { useState } from 'react';
+
+function MessageInput({ onSendMessage }) {
+  const [inputText, setInputText] = useState('');
+
+  const handleInputChange = (e) => {
+    setInputText(e.target.value);
+  };
+
+  const handleSendClick = () => {
+    if (inputText.trim() !== '') {
+      onSendMessage(inputText);
+      setInputText('');
+    }
+  };
+
   return (
     <div className="message-input">
-      {/* Aquí puedes agregar el formulario para enviar mensajes */}
-      <input type="text" placeholder="Escribe un mensaje..." />
-      <button type="button">Enviar</button>
+      <input
+        type="text"
+        value={inputText}
+        onChange={handleInputChange}
+        placeholder="Escribe un mensaje..."
+      />
+      <button type="button" onClick={handleSendClick}>Enviar</button>
     </div>
   );
 }
