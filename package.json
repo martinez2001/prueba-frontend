@@ -19,7 +19,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "https://communications-eventhub-communications-felipeiglegon.cloud.okteto.net/",
+  "proxy": "https://localhost:3000",
   "eslintConfig": {
     "extends": [
       "react-app",

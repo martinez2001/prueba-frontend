@@ -1,5 +1,5 @@
 class CommunicationAPI{
-    static API_BASE_URL = "/api/v1";
+    static API_BASE_URL = "/api/v2";
 
     static requestHeaders(){
 
@@ -12,12 +12,21 @@ class CommunicationAPI{
             headers:headers
         })
 
-        const response = await fetch(request);
-        
-        if(!response.ok){
-            throw Error("Response not valid "+ response.status);
-        }
-        return response.json();
+        try {
+            const response = await fetch(request);
+      
+            if (!response.ok) {
+              throw Error("Response not valid " + response.status);
+            }
+      
+            const data = await response.json();
+            console.log("Chats obtenidos con éxito:", data); // Agrega un log aquí
+      
+            return data;
+          } catch (error) {
+            console.error("Error al obtener chats:", error);
+            throw error;
+          }
     }
 }
 

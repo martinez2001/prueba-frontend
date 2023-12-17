@@ -13,9 +13,9 @@ function App() {
   const [chats, setChats] = useState([]);
 
   useEffect(()=>{
-    async function fetchContacts(){
+    async function fetchChats(){
       try{
-        const chats = CommunicationAPI.getChats();
+        const chats = await CommunicationAPI.getChats();
         setChats(chats);
       }catch(error){
         setChats("Could not contact with server");
@@ -23,7 +23,7 @@ function App() {
       
     }
 
-    fetchContacts();
+    fetchChats();
   }
   , []);
 
