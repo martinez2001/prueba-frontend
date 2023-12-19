@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './MessageItem.css';
 import CommunicationAPI from './CommunicationAPI';  // Importa el módulo de la API
 
-function MessageItem({ message,chat }) {
+function MessageItem({ message,chat,setMessages}) {
   const [editedText, setEditedText] = useState(message.text);
   const [isEditing, setIsEditing] = useState(false);
 
@@ -16,9 +16,13 @@ function MessageItem({ message,chat }) {
       await CommunicationAPI.editMessage(chat._id, message._id, editedText);
       console.log(`Mensaje editado: ${editedText}`);
 
+      // Recarga la lista de mensajes después de crear uno nuevo
+      const response = await CommunicationAPI.getMessages(chat._id);
+      const { messages } = response;
+      setMessages(messages);
       
       setIsEditing(false);
-      window.location.reload(); //esto se podría mejorar
+      //window.location.reload(); //esto se podría mejorar
 
     } catch (error) {
       console.error('Error al editar el mensaje:', error);
@@ -31,8 +35,12 @@ function MessageItem({ message,chat }) {
       await CommunicationAPI.deleteMessage(chat._id, message._id);
       console.log(`Mensaje borrado: ${message.text}`);
 
-      window.location.reload(); //esto se podría mejorar
-
+      //window.location.reload(); //esto se podría mejorar
+      
+      // Recarga la lista de mensajes después de crear uno nuevo
+      const response = await CommunicationAPI.getMessages(chat._id);
+      const { messages } = response;
+      setMessages(messages);
 
     } catch (error) {
       console.error('Error al borrar el mensaje:', error);

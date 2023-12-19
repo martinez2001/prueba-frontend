@@ -19,6 +19,7 @@ class CommunicationAPI {
     const body = JSON.stringify({ name, participants_id });
     return await this.makeRequest(url, "POST", headers, body);
   }
+  
 
   static async editChat(chatId, name, participants_id) {
     const headers = this.requestHeaders();

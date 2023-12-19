@@ -6,7 +6,7 @@ import CommunicationAPI from './CommunicationAPI';
 function App() {
 
   const [selectedChat, setSelectedChat] = useState(null);
-  const [selectedChatMessages, setSelectedChatMessages] = useState(null);
+  const [selectedChatMessages, setSelectedChatMessages] = useState([]);
   
   const handleChatSelect = async (chat) => {
     console.log("Chat selected:", chat._id);
@@ -59,12 +59,12 @@ function App() {
 
         {/* Sidebar con clase col-md-4 para ocupar 1/3 de la pantalla horizontal */}
         <div className="col-md-4">
-          <Sidebar chats={chats} onChatSelect={handleChatSelect}/>
+          <Sidebar chats={chats} onChatSelect={handleChatSelect} setChats={setChats}/>
         </div>
 
         {/* Contenido principal con clase col-md-8 para ocupar 2/3 de la pantalla horizontal */}
         <div className="col-md-8">
-          {selectedChat && <ChatContainer chat={selectedChat} messages={selectedChatMessages} onSendMessage={handleSendMessage}/>}        </div>
+          {selectedChat && <ChatContainer chat={selectedChat} messages={selectedChatMessages} onSendMessage={handleSendMessage} setMessages={setSelectedChatMessages}/>}        </div>
       </div>
     </div>
   );
